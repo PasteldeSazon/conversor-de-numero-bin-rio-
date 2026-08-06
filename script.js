@@ -1,4 +1,4 @@
-function converter() {
+function converterDecParaBin() {
   const input = document.getElementById("decInput");
   const resultado = document.getElementById("resultado");
 
@@ -26,7 +26,7 @@ function converter() {
   input.value = "";
 }
 
-function converterParaDecimal() {
+function converterBinParaDec() {
   const input = document.getElementById("binInput");
   const resultado = document.getElementById("resultadoBinario");
 
@@ -38,6 +38,11 @@ function converterParaDecimal() {
     alert("Por favor, digite um número binário.");
     return;
   }
+
+if (!/^[01]+$/.test(input.value.trim())) {
+  alert("Por favor, digite apenas os números 0 e 1");
+  return;
+}
 
   // Converte o binário para base 10 (decimal)
   const dec = parseInt(bin, 2);
@@ -56,8 +61,8 @@ function converterParaDecimal() {
   input.value = "";
 }
 // ___________________________________________________________________________
-function converter2() {
-  const input = document.getElementById("octInput");
+function converterDecParaOct() {
+  const input = document.getElementById("decParaOctInput");
   const resultado = document.getElementById("resultado2");
 
   // Verifica se o campo está totalmente vazio
@@ -84,7 +89,7 @@ function converter2() {
   input.value = "";
 }
 
-function converterParaDecimal() {
+function converterOctParaDec() {
   const input = document.getElementById("octInput");
   const resultado = document.getElementById("resultadoOctal");
 
@@ -96,11 +101,11 @@ function converterParaDecimal() {
   }
 
   // Validação: Garante que só existam números de 0 a 7
-  // const regexOctal = /^[0-7]+$/;
-  // if (!regexOctal.test(oct)) {
-  //   alert("Por favor, digite apenas números de 0 a 7.");
-  //   return;
-  // }
+  const regexOctal = /^[0-7]+$/;
+  if (!regexOctal.test(oct)) {
+    alert("Por favor, digite apenas números de 0 a 7.");
+    return;
+  }
 
   // Converte usando a base 8
   const dec = parseInt(oct, 8);
@@ -110,4 +115,62 @@ function converterParaDecimal() {
 
   // Limpa o campo de entrada
   input.value = "";
+}
+// ---------------------------------------------------------------------------
+// 1. Converte de Decimal para Hexadecimal
+function converterDecParaHex() {
+    const input = document.getElementById('decParaHexInput');
+    const resultado = document.getElementById('resultado3'); 
+
+    // Verifica se está vazio
+    if (input.value.trim() === '') {
+        alert('Por favor, digite um número antes de converter.');
+        return;
+    }
+
+    const dec = parseInt(input.value, 10);
+
+    // Valida se é um número inteiro válido
+    if (isNaN(dec)) {
+        alert('Por favor, digite um número inteiro válido.');
+        return;
+    }
+
+    // Converte para base 16 (hexadecimal) em letras maiúsculas
+    const hex = dec.toString(16).toUpperCase();
+
+    // Mostra o resultado
+    resultado.innerText = `O número ${dec} em hexadecimal é: ${hex}`;
+    
+    // Limpa o campo
+    input.value = '';
+}
+
+// 2. Converte de Hexadecimal para Decimal
+function converterHexParaDec() {
+    const input = document.getElementById('hexInput');
+    const resultado = document.getElementById('resultadoHexadecimal');
+    const hex = input.value.trim();
+
+    // Verifica se está vazio
+    if (hex === '') {
+        alert('Por favor, digite um número hexadecimal.');
+        return;
+    }
+
+    // Valida se contém apenas caracteres hexadecimais válidos (0-9, A-F)
+    const regexHex = /^[0-9A-Fa-f]+$/;
+    if (!regexHex.test(hex)) {
+        alert('Por favor, digite apenas caracteres hexadecimais válidos (0-9 e A-F).');
+        return;
+    }
+
+    // Converte de base 16 para decimal
+    const dec = parseInt(hex, 16);
+
+    // Exibe o resultado
+    resultado.innerText = `O número ${hex} em decimal é: ${dec}`;
+
+    // Limpa o campo
+    input.value = '';
 }
