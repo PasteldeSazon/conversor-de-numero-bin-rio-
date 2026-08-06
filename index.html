@@ -1,22 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Conversor de numeros binários</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML + CSS</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <h2>Decimal/binário</h2>
     <input type="number" id="decInput" placeholder="Digite um número decimal" />
     <button onclick="converter()">Converter</button>
 
     <p id="resultado"></p>
 
-    <input type="text" id="binInput" placeholder="Digite o número binário" />
+    <input type="number" id="binInput" placeholder="Digite o número binário" />
     <button onclick="converterParaDecimal()">Converter</button>
 
     <p id="resultadoBinario"></p>
 
+    <h2>Octal</h2>
+    <input type="number" id="octInput" placeholder="Digite um número decimal" />
+    <button onclick="converter2()">Converter</button>
+
+    <p id="resultado2"></p>
+
+    <!-- O id "octInput" deve ser idêntico ao do JavaScript -->
+    <input type="text" id="octInput" placeholder="Digite um número octal" />
+
+    <!-- O botão precisa chamar a função exatamente com o mesmo nome -->
+    <button onclick="converterParaDecimal()">Converter</button>
+
+    <!-- O id "resultadoOctal" deve ser idêntico ao do JavaScript -->
+    <p id="resultadoOctal"></p>
     <!-- Esta linha abaixo vai puxar o arquivo correto -->
     <script src="script.js"></script>
   </body>
